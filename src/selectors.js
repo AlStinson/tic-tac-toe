@@ -9,9 +9,9 @@ export const selectAscendingOrder = state => state.look.historialAscendingOrder;
 export const selectCurrent = createSelector(
 	selectTurn,
 	selectRecord,
-	(turn, record) => {
-		return {current: record.slice()[turn].squares};
-	}
+	(turn, record) => ({
+		current: record.slice()[turn].squares
+	})
 );
 
 export const selectWinner = createSelector( 
@@ -29,31 +29,27 @@ export const selectWinner = createSelector(
 
 export const selectXIsNext = createSelector( 
 	selectTurn, 
-	(turn) => {
-		return {xIsNext: turn%2===0};
-	}
+	(turn) => ({
+		xIsNext: turn%2===0
+	})
 )
 
 export const selectBoard = createSelector(
 	selectCurrent,
 	selectWinner,
 	selectXIsNext, 
-	(current,winner,xIsNext) => {
-		return Object.assign({},current,winner,xIsNext);
-	}
+	(current,winner,xIsNext) => Object.assign({},current,winner,xIsNext)
 )
 
 export const selectForRecord = createSelector(
 	selectGame,
 	selectAscendingOrder,
-	(game,ascendingOrder) => {
-		return ({
-			turn: game.turn,
-			record: game.record,
-			moves: game.moves,
-			ascendingOrder: ascendingOrder
-		});
-	}
+	(game,ascendingOrder) => ({
+		turn: game.turn,
+		record: game.record,
+		moves: game.moves,
+		ascendingOrder: ascendingOrder
+	})
 );
 
 const lines = [

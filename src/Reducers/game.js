@@ -2,7 +2,7 @@ const initialGameState = {
 	turn: 0,
 	record: [{squares:Array(9).fill(null)}],
 	moves: [],
-}
+};
 
 export const gameReducer = (state=initialGameState, action) => {
 	if (action.type === "MOVED"){
@@ -25,4 +25,4 @@ export const gameReducer = (state=initialGameState, action) => {
 		})
 	}
 	return state;
-}
+};

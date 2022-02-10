@@ -5,8 +5,8 @@ import {doGoToMove,doRestart,doChangeOrder} from './../actions.js';
 const actions = {doGoToMove,doRestart,doChangeOrder};
 
 const Record = state => {
-	const {record, moves, turn, ascendingOrder} = state
-	const {doGoToMove, doRestart, doChangeOrder} = state
+	const {record, moves, turn, ascendingOrder} = state;
+	const {doGoToMove, doRestart, doChangeOrder} = state;
 	const list = record.slice(1,record.length).map((set,move) => {
 		move ++;
 		move = ascendingOrder ? move : record.length-move;
@@ -20,7 +20,7 @@ const Record = state => {
 				</button> 
 			</li>
 		);
-	})
+	});
 	return (
 		<>
 		<button onClick={() => doRestart()}> 
@@ -44,8 +44,6 @@ const RecordItem = props => {
 	}
 }
 
-const numberToPosition = n => {
-	return "(" + n%3 + "," + Math.floor(n/3) + ")"
-}
+const numberToPosition = n => ("(" + n%3 + "," + Math.floor(n/3) + ")");
 
 export default connect(selectForRecord,actions)(Record);

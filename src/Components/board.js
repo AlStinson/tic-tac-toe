@@ -3,16 +3,14 @@ import {selectBoard} from './../selectors.js';
 import {doMove} from './../actions.js';
 
 
-const Square = props => {
-	return (
-		<button className="square" 
-			onClick={props.onClick}
-			style = {{backgroundColor: props.winner?"#FFFF00":"#FFFFFF"}}
-		>
-			{props.value}
-		</button>
-	);
-}
+const Square = props => (
+	<button className="square" 
+		onClick={props.onClick}
+		style = {{backgroundColor: props.winner?"#FFFF00":"#FFFFFF"}}
+	>
+		{props.value}
+	</button>
+);
 
 const Row = props => {
 	const columns = [];
@@ -30,10 +28,9 @@ const Row = props => {
 		{columns}
 		</div>
 	);
-}
+};
 
 const Board = state => {
-	
 	const {current, winner, xIsNext} = state;
 	const {doMove} = state;
 	const handleClick = (i) => {
@@ -52,6 +49,6 @@ const Board = state => {
 				  />);
 	}
     return <div> {rows} </div>;
-}
+};
 
 export default connect(selectBoard,{doMove})(Board);
